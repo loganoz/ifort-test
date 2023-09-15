@@ -27,8 +27,8 @@ jobs:
 
       - name: Step One
         run: curl --fail -o dates.csv https://doesnotexist.com/dates.csv
-        continue-on-error: true
+        #continue-on-error: true
       - name: Step Two
         run: date >> dates.csv
-        continue-on-error: true
+        #continue-on-error: true
       
