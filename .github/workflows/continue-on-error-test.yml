@@ -1,0 +1,11 @@
+Job:
+  MyRun:
+    runs-on: ubuntu-latest
+
+    continue-on-error: true
+    
+    steps:
+      - name: Step One
+        run: curl --fail -o dates.csv https://doesnotexist.com/dates.csv
+      - name: Step Two
+        run: date >> dates.csv
