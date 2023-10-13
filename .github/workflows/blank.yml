@@ -51,3 +51,5 @@ jobs:
         source /opt/intel/oneapi/setvars.sh
         printenv >> $GITHUB_ENV
         ifort --version
+        cd ${MKLROOT}
+        ls 
