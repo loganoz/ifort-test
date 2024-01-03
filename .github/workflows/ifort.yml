@@ -49,8 +49,10 @@ jobs:
 
     - name: Setup Intel oneAPI environment
       run: |
+        var="$@"
         source /opt/intel/oneapi/setvars.sh
-        printenv >> $@GITHUB_ENV
+        eval set -- $var
+        printenv >> $GITHUB_ENV
         ifort --version
         cd ${MKLROOT}/lib/intel64/
         ls
