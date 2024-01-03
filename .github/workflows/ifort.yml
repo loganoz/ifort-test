@@ -53,6 +53,7 @@ jobs:
         source /opt/intel/oneapi/setvars.sh
         eval set -- $var
         printenv >> $GITHUB_ENV
+        echo "$GITHUB_ENV"
         ifort --version
         cd ${MKLROOT}/lib/intel64/
         ls
