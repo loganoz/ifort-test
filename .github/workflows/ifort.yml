@@ -5,6 +5,12 @@ name: ifort
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
 on:
+# Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
   workflow_dispatch:
     # Inputs the workflow accepts.
     inputs:
@@ -51,7 +57,7 @@ jobs:
       run: |
         source /opt/intel/oneapi/setvars.sh 
         printenv >> $GITHUB_ENV
-        /opt/intel/oneapi/compiler/2024.0/bin/ifort --version
+        /opt/intel/oneapi/compiler/latest/bin/ifort --version
         ${FC} --version
         cd ${MKLROOT}/lib/intel64/
         ls
