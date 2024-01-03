@@ -57,7 +57,7 @@ jobs:
       run: |
         source /opt/intel/oneapi/setvars.sh 
         printenv >> $GITHUB_ENV
-        alias ifort=/opt/intel/oneapi/compiler/2024.0/bin/ifort
+        alias ifort='/opt/intel/oneapi/compiler/2024.0/bin/ifort'
         ifort --version
         ${FC} --version
         cd ${MKLROOT}/lib/intel64/
