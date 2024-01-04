@@ -28,11 +28,11 @@ on:
 jobs:
 
   linux-intel-oneapi:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     env:
       CC: icx
       CXX: icpx
-      FC: /opt/intel/oneapi/compiler/2024.0/bin/ifort
+      FC: ifort
 
     steps:
     - uses: actions/checkout@v4
