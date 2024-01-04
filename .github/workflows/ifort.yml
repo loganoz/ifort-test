@@ -58,10 +58,10 @@ jobs:
       timeout-minutes: 10
       run: sudo apt-get install intel-oneapi-mpi intel-oneapi-mpi-devel
 
-    # optional
-    #- name: Install Intel MKL
-    #  timeout-minutes: 10
-    #  run: sudo apt-get intel-oneapi-mkl-devel ninja-build
+     optional
+    - name: Install Intel MKL
+      timeout-minutes: 10
+      run: sudo apt-get intel-oneapi-mkl
 
     - name: checkout project code
       uses: actions/checkout@v4
