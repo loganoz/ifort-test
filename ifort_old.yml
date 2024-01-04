@@ -1,0 +1,62 @@
+# This is a basic workflow that is manually triggered
+
+name: ifort-old
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+# Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      name:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Person to greet'
+        # Default value if no value is explicitly provided
+        default: 'World'
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+
+  linux-intel-oneapi:
+    runs-on: ubuntu-latest
+    env:
+      CC: icx
+      CXX: icpx
+      FC: ifort
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Intel Apt repository
+      timeout-minutes: 10
+      run: |
+        wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+        sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+        sudo add-apt-repository "deb https://apt.repos.intel.com/oneapi all main"
+        sudo apt-get update
+        
+    - name: Install Intel oneAPI
+      timeout-minutes: 10
+      run: sudo apt-get install intel-oneapi-compiler-fortran intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic intel-oneapi-mpi intel-oneapi-mpi-devel intel-oneapi-mkl-devel ninja-build
+
+    - name: checkout project code
+      uses: actions/checkout@v3
+
+    - name: Setup Intel oneAPI environment
+      run: |
+        source /opt/intel/oneapi/setvars.sh
+        printenv >> $GITHUB_ENV
+        ifort --version
+        cd ${MKLROOT}/lib/intel64/
+        ls
+        
