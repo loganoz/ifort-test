@@ -61,7 +61,7 @@ jobs:
     # optional
     - name: Install Intel MKL
       timeout-minutes: 10
-      run: sudo apt-get intel-oneapi-mkl-devel
+      run: sudo apt-get intel-oneapi-mkl-devel ninja-build
 
     - name: checkout project code
       uses: actions/checkout@v4
