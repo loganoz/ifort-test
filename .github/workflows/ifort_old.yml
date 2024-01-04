@@ -28,7 +28,7 @@ on:
 jobs:
 
   linux-intel-oneapi:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     env:
       CC: icx
       CXX: icpx
