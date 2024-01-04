@@ -58,7 +58,7 @@ jobs:
       timeout-minutes: 10
       run: sudo apt-get install intel-oneapi-mpi intel-oneapi-mpi-devel
 
-     optional
+    # optional
     - name: Install Intel MKL
       timeout-minutes: 10
       run: sudo apt-get intel-oneapi-mkl
