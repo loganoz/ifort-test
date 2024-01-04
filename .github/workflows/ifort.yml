@@ -28,7 +28,7 @@ on:
 jobs:
 
   linux-intel-oneapi:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     env:
       CC: icx
       CXX: icpx
@@ -59,9 +59,9 @@ jobs:
       run: sudo apt-get install intel-oneapi-mpi intel-oneapi-mpi-devel
 
     # optional
-    - name: Install Intel MKL
-      timeout-minutes: 10
-      run: sudo apt-get intel-oneapi-mkl-devel ninja-build
+    #- name: Install Intel MKL
+    #  timeout-minutes: 10
+    #  run: sudo apt-get intel-oneapi-mkl-devel ninja-build
 
     - name: checkout project code
       uses: actions/checkout@v4
