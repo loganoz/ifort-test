@@ -73,5 +73,7 @@ jobs:
         printenv | grep intel
         ifx --version
         ifort --version
+        icx --version
+        icc --version
         cd ${MKLROOT}/lib/intel64/
         ls
